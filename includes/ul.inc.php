@@ -14,19 +14,14 @@
     <div class="d-flex p-2 bd-highlight w-25 p-3" >
 
         <nav>
-            <button type="button" class="btn btn-outline-secondary w-100 p-2" >Home </button>
+            <button type="button" class="btn btn-outline-secondary w-100 p-2" ><a href="index.php"> Home </a></button>
                 <ul class="list-group">
-                    <li class="list-group-item active" aria-current="true">An active item</li>
-                    <button type="button" class="list-group-item list-group-item-action">Debogage</button>
-                    <button type="button" class="list-group-item list-group-item-action">Concaténation</button>
-                    <button type="button" class="list-group-item list-group-item-action">Boucle</button>
-                    <button type="button" class="list-group-item list-group-item-action">Fonction</button>
-                    <button type="button" class="list-group-item list-group-item-action">Supprimer</button>
-                    <!-- <li class="list-group-item">Debogage</li>
-                    <li class="list-group-item">Concaténation</li>
-                    <li class="list-group-item">Boucle</li>
-                    <li class="list-group-item">Fonction</li>
-                    <li class="list-group-item">Supprimer</li> -->
+                    <li class="list-group-item active" aria-current="true"></li>
+                    <button type="button" class="list-group-item list-group-item-action"><a href="index.php?debugging">Debogage</a></button>
+                    <button type="button" class="list-group-item list-group-item-action"><a href="index.php?concaténation">Concaténation</a></button>
+                    <button type="button" class="list-group-item list-group-item-action"><a href="index.php?loop">Boucle</a></button>
+                    <button type="button" class="list-group-item list-group-item-action"><a href="index.php?function">Fonction</a></button>
+                    <button type="button" class="list-group-item list-group-item-action"><a href="index.php?del">Supprimer</a></button>
                 </ul>
         </nav>
 
