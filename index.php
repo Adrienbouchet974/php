@@ -71,14 +71,22 @@
 
                 elseif(isset($_GET['concatenation'])) {
                     echo '<h2 class="text-center"> Concaténation </h2></br>' ;
-                    echo '<h3>===> construction d\'une phrase à l\'aide d\'un tableau :</h3>' ;
-                    echo $table['civility'] .$table['first_name'] .$table['last_name'] ;
-                    echo '<h3>===> construction d\'une phrase après MAJ du tableau :</h3>' ;
-                    echo '<h3>===> affichage d\'une virgule à la place du point pour la taille :</h3>' ;
+                    echo '<h3 class="fs-6">===> Construction d\'une phrase avec le contenu du tableau</h3>';
+                    echo '<p>';
+                    echo ($table['civility'] == 'women') ? 'Mme ' : 'Mr ';
+                    echo ucfirst($table['first_name']).' '.strtoupper($table['last_name']) .'</br>' ;
+                    echo 'j\'ai ' .$table['age'] .'ans et je mesure '.$table['size'] .'m.</p>';
+                    str_replace(".", ",", $table['size']);
+                    echo '<h3 class="fs-6">===> construction d\'une phrase après MAJ du tableau :</h3>' ;
+                    echo '<h3 class="fs-6">===> affichage d\'une virgule à la place du point pour la taille :</h3>' ;
 
                 }
 
                 elseif(isset($_GET['loop'])){
+                    foreach($_POST as&$table) {
+                        echo "à la ligne" ;
+
+                    }
 
                 }
 
