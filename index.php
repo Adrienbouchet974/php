@@ -25,12 +25,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 mt-3">
-                
                 <nav>
                     
-                    <a class="btn btn-outline-secondary w-100" role="button" href="index.php">Home</a>
+                <a class="btn btn-outline-secondary w-100" role="button" href="index.php">Home</a>
                     
-                    
+                <?php if(isset($table))  include_once ("./includes/ul.inc.php"); ?>
                 
                 </nav>
             </div>
@@ -39,37 +38,48 @@
 
                 
 
-                <?php if (isset($_GET['add'])) { include_once ("./includes/form.inc.html");
-                }
-                elseif(isset($_POST['enregistrer'])) {
+                <?php if(isset($_GET['add'])) include_once ('./includes/form.inc.html');
+                    elseif(isset($_POST['enregistrer'])) {
                     $prenom = $_POST['Prénom'];
                     $nom = $_POST['Nom'];
                     $age = $_POST['Age'];
                     $size = $_POST['Taille'];
-                    $civility = $_POST['civilité'];
+                    $civility = $_POST['civility'];
                         $table = array(
                         "first_name" => $prenom,
                         "last_name" => $nom,
                         "age" => $age,
-                        "height" => $size,
+                        "size" => $size,
                         "civility" => $civility
                     );
                 
                     $_SESSION['table'] = $table;
                     echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
-                    print_r($table);
                 }
+                
                 else {
-                    
+                    echo '<a role="button" class="btn btn-primary" href="index.php?add">Ajouter des données</a>';
+                    }
                 
+                if(isset($_GET['debugging'])) {
+                    echo'<h1 class="text-center"> Débogage </h1></br>';
+                    echo '<h2>===> Lecture du tableau à l\'aide de la fonction print_r</h2><br/>' ;
+                    echo '<pre>';
+                    print_r($table);
+                    echo '</pre>';
+                    }
 
-
-                include ("./includes/ul.inc.php");
-
-                echo '<a role="button" class="btn btn-primary" href="index.php?add">Ajouter des données</a>';
-                
+                elseif(isset($_GET['concatenation'])) {
 
                 }
+
+                
+                
+                elseif(isset($_GET['del'])) {
+                    session_destroy();
+                    echo '<p class="alert-success text-center py-3"> Données supprimées</p>' ;
+                    }
+
 
 
                 ?>
