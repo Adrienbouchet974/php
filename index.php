@@ -9,7 +9,7 @@
     //    "civility" => "man",
     // );
 
-    
+    if (isset($_SESSION['table'])) $table = $_SESSION['table'];
 
 ?>
 
@@ -29,7 +29,7 @@
                 <nav>
                     
                     <a class="btn btn-outline-secondary w-100" role="button" href="index.php">Home</a>
-                    <?php if (isset($table)) include_once ("./includes/ul.inc.php"); ?>
+                    
                     
                 
                 </nav>
@@ -39,39 +39,46 @@
 
                 
 
-                <?php if (isset($_GET['add'])) include ("./includes/form.inc.html");
-        
-                if($_POST == NULL){
-
-                $table = array(
-                $first_name = $_POST['Prenom'],
-                $last_name = $_POST['Nom'],
-                $age = $_POST['Age'],
-                $size = $_POST['Taille'],
-                $civility = $_POST['civilité'],
-                );
-
-
-                $_SESSION['table'] = $table;
-
-                echo '<a href="index.php?add" role="button" class="btn btn-primary">Ajouter des données</a>' ;}
-                else{
-                    echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
+                <?php if (isset($_GET['add'])) { include_once ("./includes/form.inc.html");
                 }
-                ?>
-
-
-                <?php if(isset($_SESSION['table'])) include_once ("./includes/ul.inc.php"); ?>
-
+                elseif(isset($_POST['enregistrer'])) {
+                    $prenom = $_POST['Prénom'];
+                    $nom = $_POST['Nom'];
+                    $age = $_POST['Age'];
+                    $size = $_POST['Taille'];
+                    $civility = $_POST['civilité'];
+                        $table = array(
+                        "first_name" => $prenom,
+                        "last_name" => $nom,
+                        "age" => $age,
+                        "height" => $size,
+                        "civility" => $civility
+                    );
+                
+                    $_SESSION['table'] = $table;
+                    echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
+                    print_r($table);
+                }
+                else {
                     
+                
+
+
+                include ("./includes/ul.inc.php");
+
+                echo '<a role="button" class="btn btn-primary" href="index.php?add">Ajouter des données</a>';
+                
+
+                }
+
+
+                ?>
 
             </section>
             
         </div>
     </div>
     <?php include("includes/footer.inc.html"); ?>
-    <pre><?php print_r($_POST); ?>
-    </pre>
 </body>
 </html>
 
