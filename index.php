@@ -62,18 +62,30 @@
                     }
                 
                 if(isset($_GET['debugging'])) {
-                    echo'<h1 class="text-center"> Débogage </h1></br>';
-                    echo '<h2>===> Lecture du tableau à l\'aide de la fonction print_r</h2><br/>' ;
+                    echo '<h2 class="text-center"> Débogage </h2></br>';
+                    echo '<h3>===> Lecture du tableau à l\'aide de la fonction print_r</h3><br/>' ;
                     echo '<pre>';
                     print_r($table);
                     echo '</pre>';
                     }
 
                 elseif(isset($_GET['concatenation'])) {
+                    echo '<h2 class="text-center"> Concaténation </h2></br>' ;
+                    echo '<h3>===> construction d\'une phrase à l\'aide d\'un tableau :</h3>' ;
+                    echo $table['civility'] .$table['first_name'] .$table['last_name'] ;
+                    echo '<h3>===> construction d\'une phrase après MAJ du tableau :</h3>' ;
+                    echo '<h3>===> affichage d\'une virgule à la place du point pour la taille :</h3>' ;
 
                 }
 
-                
+                elseif(isset($_GET['loop'])){
+
+                }
+
+                elseif(isset($_GET['function'])){
+
+                }
+
                 
                 elseif(isset($_GET['del'])) {
                     session_destroy();
