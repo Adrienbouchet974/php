@@ -37,7 +37,7 @@
                 elseif(isset($_POST['enregistrer'])) 
                     {
                     $prenom = htmlspecialchars($_POST['Prénom']);
-                    $nom = $_POST['Nom'];
+                    $nom = htmlspecialchars($_POST['Nom']);
                     $age = $_POST['Age'];
                     $size = $_POST['Taille'];
                     $civility = $_POST['civility'];
