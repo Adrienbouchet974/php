@@ -34,7 +34,7 @@
                 <?php if(isset($_GET['add'])) include_once ('./includes/form.inc.html');
                 
                     
-                if(isset($_POST['enregistrer'])) 
+                elseif(isset($_POST['enregistrer'])) 
                     {
                     $prenom = $_POST['Prénom'];
                     $nom = $_POST['Nom'];
@@ -67,6 +67,7 @@
 
                 elseif(isset($_GET['concatenation']))
                     // concaténation partie 1
+
                     {
                     echo '<h2 class="text-center"> Concaténation </h2></br>' ;
                     echo '<h3 class="fs-6">===> Construction d\'une phrase avec le contenu du tableau</h3>';
@@ -74,13 +75,18 @@
                     $civility=($table['civility'] == 'femme') ? 'Mme ' : 'Mr ';
                     echo $civility .$table['first_name'].' '.$table['last_name'] .'</br>' ;
                     echo 'j\'ai ' .$table['age'] .'ans et je mesure '.$table['size'] .'m.</p>';
+
                     // concaténation partie 2
+
                     echo '<h3 class="fs-6">===> construction d\'une phrase après MAJ du tableau :</h3>' ;
                     echo'<p>';
                     echo ($table['civility'] == 'femme') ? 'Mme ' : 'Mr ';
                     echo ucfirst($table['first_name']).' '.strtoupper($table['last_name']) .'</br>' ;
                     echo 'j\'ai ' .$table['age'] .'ans et je mesure '.$table['size'] .'m.</p>';
+                    print_r($table);
+
                     // concaténation partie 3
+
                     echo '<h3 class="fs-6">===> affichage d\'une virgule à la place du point pour la taille :</h3>' ;
                     str_replace('.', ',', $table['size']);
                     echo ($table['civility'] == 'femme') ? 'Mme ' : 'Mr ';
@@ -93,14 +99,15 @@
                 {
                     echo '<h2 class="text-center"> Boucle </h2></br>' ;
                     echo '<h3>===> Lecture du tableau à l\'aide d\'une boucle foreach</h3>' ;
+                    $numero = 0 ;
                         foreach($table as $key => $table) 
                         {
                             echo'</br>' ;
-                            $numéro = $numéro + 1;
-                            echo "à la ligne n°$numéro correspond la clé";
+                            echo "à la ligne n°$numero correspond la clé";
                             echo ' "'."$key".'" ' ;
                             echo 'et contient' ;
                             echo ' "'."$table".'"' ;
+                            $numero++ ;
                             
                         }
                         
@@ -113,18 +120,19 @@
                     
                     function readTable($table) 
                     {   
+                        $numero = 0 ;
                         foreach($table as $key => $table) 
                         {
                             echo'</br>' ;
-                            $numéro = 1 ;
-                            echo "à la ligne n°$numéro correspond la clé";
+                            echo "à la ligne n°$numero correspond la clé";
                             echo ' "'."$key".'" ' ;
                             echo 'et contient' ;
-                            echo ' "'."$table".'"' ; 
+                            echo ' "'."$table".'"' ;
+                            $numero++ ; 
                         }
                     }
 
-                    echo readTable($table);
+                    readTable($table);
 
                     $prenom = $_POST['Prénom'];
                     $nom = $_POST['Nom'];
