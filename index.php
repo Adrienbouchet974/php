@@ -101,8 +101,9 @@
                             echo ' "'."$key".'" ' ;
                             echo 'et contient' ;
                             echo ' "'."$table".'"' ;
+                            
                         }
-
+                        
                 }
 
                 elseif(isset($_GET['function'])) 
@@ -121,8 +122,6 @@
                             echo 'et contient' ;
                             echo ' "'."$table".'"' ; 
                         }
-                        
-                        return "à la ligne n°$numéro  correspond la clé" .' "'."$key" .'"' ." et contient" ." $table" ;
                     }
 
                     echo readTable($table);
