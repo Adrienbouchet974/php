@@ -34,38 +34,71 @@
                 <?php  
                 
                 if(isset($_GET['add'])) include_once ('./includes/form.inc.html');
-                
-                    elseif(isset($_GET['addmore'])) include_once ('./includes/form2.inc.php');
-                
+
+                elseif(isset($_POST['enregistrer'])) 
+                {
+                $prenom = htmlspecialchars($_POST['Prénom']);
+                $nom = htmlspecialchars($_POST['Nom']);
+                $age = $_POST['Age'];
+                $size = $_POST['Taille'];
+                $civility = $_POST['civility'];
+                    $table = array
+                    (
+                    "first_name" => $prenom,
+                    "last_name" => $nom,
+                    "age" => $age,
+                    "size" => $size,
+                    "civility" => $civility
+                    );
                     
-                    elseif(isset($_POST['enregistrer'])) 
-                    {
-                    $prenom = htmlspecialchars($_POST['Prénom']);
-                    $nom = htmlspecialchars($_POST['Nom']);
-                    $age = $_POST['Age'];
-                    $size = $_POST['Taille'];
-                    $civility = $_POST['civility'];
-                        $table = array
-                        (
-                        "first_name" => $prenom,
-                        "last_name" => $nom,
-                        "age" => $age,
-                        "size" => $size,
-                        "civility" => $civility
-                        );
+                    $_SESSION['table'] = $table;
+                    echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
+                }
+                
+                elseif(isset($_GET['addmore'])) include_once('./includes/form2.inc.php');
+
+                elseif(isset($_POST['enregistrer2'])) 
+                {
+                $prenom = htmlspecialchars($_POST['Prénom']);
+                $nom = htmlspecialchars($_POST['Nom']);
+                $age = $_POST['Age'];
+                $size = $_POST['Taille'];
+                $civility = $_POST['civility'];
+                $html = $_POST['html'];
+                $css = $_POST['css'];
+                $javascript = $_POST['javascript'];
+                $php = $_POST['php'];
+                $mysql = $_POST['mysql'];
+                $bootstrap = $_POST['bootstrap'];
+                $symfony = $_POST['symfony'];
+                $react = $_POST['react'];
+                $connaissances = ($html. $css. $php. $javascript. $mysql. $bootstrap. $symfony.  $react);
+
+                $table = array
+                    (
+                    "first_name" => $prenom,
+                    "last_name" => $nom,
+                    "age" => $age,
+                    "size" => $size,
+                    "civility" => $civility,
+                    "connaissances" => $connaissances,
+                    );
                     
-                        $_SESSION['table'] = $table;
-                        echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
-                    }
-                
-            
-                
+
+                    
+                    $_SESSION['table'] = $table;
+                    echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
+                }
+
                 elseif(isset($_GET['debugging'])) 
                 {
                     echo '<h2 class="text-center"> Débogage </h2></br>';
                     echo '<h3>===> Lecture du tableau à l\'aide de la fonction print_r</h3><br/>' ;
                     echo '<pre>';
                     print_r($table);
+                    echo '</pre>';
+                    echo '<pre>';
+                    print_r($array);
                     echo '</pre>';
                 }
 
@@ -165,6 +198,10 @@
                     echo '<a role="button" class="btn btn-secondary" href="index.php?addmore">Ajouter plus de données</a>' ;
                 }
                 ?>
+                
+                
+                
+                
             </section>
         </div>
     </div>
