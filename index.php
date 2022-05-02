@@ -32,6 +32,7 @@
                 
 
                 <?php if(isset($_GET['add'])) include_once ('./includes/form.inc.html');
+                
                     
                 elseif(isset($_POST['enregistrer'])) 
                     {
@@ -73,21 +74,21 @@
                     echo '<h2 class="text-center"> Concaténation </h2></br>' ;
                     echo '<h3 class="fs-6">===> Construction d\'une phrase avec le contenu du tableau</h3>';
                     echo '<p>';
-                    echo ($table['civility'] == 'women') ? 'Mme ' : 'Mr ';
-                    echo $table['first_name'].' '.$table['last_name'] .'</br>' ;
+                    $civility=($table['civility'] == 'femme') ? 'Mme ' : 'Mr ';
+                    echo $civility .$table['first_name'].' '.$table['last_name'] .'</br>' ;
                     echo 'j\'ai ' .$table['age'] .'ans et je mesure '.$table['size'] .'m.</p>';
                     // concaténation partie 2
                     echo '<h3 class="fs-6">===> construction d\'une phrase après MAJ du tableau :</h3>' ;
                     echo'<p>';
-                    echo ($table['civility'] == 'women') ? 'Mme ' : 'Mr ';
+                    echo ($table['civility'] == 'femme') ? 'Mme ' : 'Mr ';
                     echo ucfirst($table['first_name']).' '.strtoupper($table['last_name']) .'</br>' ;
                     echo 'j\'ai ' .$table['age'] .'ans et je mesure '.$table['size'] .'m.</p>';
                     // concaténation partie 3
                     echo '<h3 class="fs-6">===> affichage d\'une virgule à la place du point pour la taille :</h3>' ;
                     str_replace('.', ',', $table['size']);
-                    echo ($table['civility'] == 'women') ? 'Mme ' : 'Mr ';
+                    echo ($table['civility'] == 'femme') ? 'Mme ' : 'Mr ';
                     echo ucfirst($table['first_name']).' '.strtoupper($table['last_name']) .'</br>' ;
-                    echo 'j\'ai ' .$table['age'] .'ans et je mesure '.$table['size'] .'m.</p>';
+                    echo 'j\'ai ' .$table['age'] .'ans et je mesure '.str_replace('.',',',$table['size']) .'m.</p>';
 
                     }
 
