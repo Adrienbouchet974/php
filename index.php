@@ -31,10 +31,14 @@
 
                 
 
-                <?php if(isset($_GET['add'])) include_once ('./includes/form.inc.html');
+                <?php  
+                
+                if(isset($_GET['add'])) include_once ('./includes/form.inc.html');
+                
+                    elseif(isset($_GET['addmore'])) include_once ('./includes/form2.inc.php');
                 
                     
-                elseif(isset($_POST['enregistrer'])) 
+                    elseif(isset($_POST['enregistrer'])) 
                     {
                     $prenom = htmlspecialchars($_POST['Prénom']);
                     $nom = htmlspecialchars($_POST['Nom']);
@@ -157,7 +161,8 @@
                     }
                 else 
                 {
-                    echo '<a role="button" class="btn btn-primary" href="index.php?add">Ajouter des données</a>';
+                    echo '<a role="button" class="btn btn-primary me-2" href="index.php?add">Ajouter des données</a>';
+                    echo '<a role="button" class="btn btn-secondary" href="index.php?addmore">Ajouter plus de données</a>' ;
                 }
                 ?>
             </section>
