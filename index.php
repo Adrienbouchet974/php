@@ -36,7 +36,7 @@
                     
                 elseif(isset($_POST['enregistrer'])) 
                     {
-                    $prenom = $_POST['Prénom'];
+                    $prenom = htmlspecialchars($_POST['Prénom']);
                     $nom = $_POST['Nom'];
                     $age = $_POST['Age'];
                     $size = $_POST['Taille'];
@@ -81,16 +81,19 @@
                     echo '<h3 class="fs-6">===> construction d\'une phrase après MAJ du tableau :</h3>' ;
                     echo'<p>';
                     echo ($table['civility'] == 'femme') ? 'Mme ' : 'Mr ';
-                    echo ucfirst($table['first_name']).' '.strtoupper($table['last_name']) .'</br>' ;
+                    $table['first_name'] = ucfirst($table['first_name']) ;
+                    $table['last_name'] = strtoupper($table['last_name']) ;
+                    echo $table['first_name'].' '.$table['last_name'] .'</br>' ;
                     echo 'j\'ai ' .$table['age'] .'ans et je mesure '.$table['size'] .'m.</p>';
-                    print_r($table);
 
                     // concaténation partie 3
 
                     echo '<h3 class="fs-6">===> affichage d\'une virgule à la place du point pour la taille :</h3>' ;
                     str_replace('.', ',', $table['size']);
                     echo ($table['civility'] == 'femme') ? 'Mme ' : 'Mr ';
-                    echo ucfirst($table['first_name']).' '.strtoupper($table['last_name']) .'</br>' ;
+                    $table['first_name'] = ucfirst($table['first_name']) ;
+                    $table['last_name'] = strtoupper($table['last_name']) ;
+                    echo $table['first_name'].' '.$table['last_name'] .'</br>' ;
                     echo 'j\'ai ' .$table['age'] .'ans et je mesure '.str_replace('.',',',$table['size']) .'m.</p>';
 
                     }
