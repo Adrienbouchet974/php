@@ -34,7 +34,7 @@
                 <?php if(isset($_GET['add'])) include_once ('./includes/form.inc.html');
                 
                     
-                elseif(isset($_POST['enregistrer'])) 
+                if(isset($_POST['enregistrer'])) 
                     {
                     $prenom = $_POST['Prénom'];
                     $nom = $_POST['Nom'];
@@ -54,12 +54,9 @@
                         echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
                     }
                 
-                else 
-                {
-                    echo '<a role="button" class="btn btn-primary" href="index.php?add">Ajouter des données</a>';
-                }
+            
                 
-                if(isset($_GET['debugging'])) 
+                elseif(isset($_GET['debugging'])) 
                 {
                     echo '<h2 class="text-center"> Débogage </h2></br>';
                     echo '<h3>===> Lecture du tableau à l\'aide de la fonction print_r</h3><br/>' ;
@@ -148,6 +145,10 @@
                     session_destroy();
                     echo '<p class="alert-success text-center py-3"> Données supprimées</p>' ;
                     }
+                else 
+                {
+                    echo '<a role="button" class="btn btn-primary" href="index.php?add">Ajouter des données</a>';
+                }
                 ?>
             </section>
         </div>
