@@ -91,41 +91,33 @@
                 $extensions = ['png', 'jpg'];
                 $maxSize = 2000000;
                 
-                if(in_array($extension, $extensions))
-                {
-                move_uploaded_file($tmpName, './uploaded/'.$name);
-                }
-                else {
-                session_destroy();
-                echo'<p class="alert-danger text-center py-3"> Extension "pdf" non pris en charge. </p>';
-                }
+                    if(in_array($extension, $extensions))
+                    {
+                    move_uploaded_file($tmpName, './uploaded/'.$name);
+                    }
+                    else {
+                    echo'<p class="alert-danger text-center py-3"> Extension "pdf" non pris en charge. </p>';
+                    }
 
-                if($maxSize <= $filesize)
-                {
-                session_destroy();
-                echo'<p class="alert-danger text-center py-3"> La taille de l\'image doit être infèrieur à 2Mo. </p>';
-                }
-                else
-                {
-                move_uploaded_file($tmpName, './uploaded/'.$name);
-                }
+                    if($maxSize <= $filesize)
+                    {
+                    echo'<p class="alert-danger text-center py-3"> La taille de l\'image doit être infèrieur à 2Mo. </p>';
+                    }
+                    else
+                    {
+                    move_uploaded_file($tmpName, './uploaded/'.$name);
+                    }
 
-                if($error == 4)
-                {
-                session_destroy();
-                echo'<p class="alert-danger text-center py-3"> Auncun fichier n\'a été télécharger. </p>';
-                }
-                else
-                {
-                move_uploaded_file($tmpName, './uploaded/'.$name);
-                }
+                    if($error == 4)
+                    {
+                    echo'<p class="alert-danger text-center py-3"> Auncun fichier n\'a été télécharger. </p>';
+                    }
+                    else
+                    {
+                    move_uploaded_file($tmpName, './uploaded/'.$name);
+                    }
 
                 
-                
-
-                echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
-                
-
                 $table = array
                     (
                     "first_name" => $prenom,
@@ -140,13 +132,9 @@
                     );
                     
                     $_SESSION['table'] = $table;
-
-                    $_SESSION = $table;
-                    
+                    echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
                 
                 }
-
-                
 
                 
                 elseif(isset($_GET['debugging'])) 
@@ -244,15 +232,20 @@
                     );
                 } 
 
-                elseif(isset($_GET['del'])) {
+                elseif(isset($_GET['del'])) 
+                    {
+                    $sup = "./uploaded/".$table['img']['name'];
+                    unlink($sup);
+                    
                     session_destroy();
                     echo '<p class="alert-success text-center py-3"> Données supprimées</p>' ;
                     }
-                else 
-                {
+                    else 
+                    {
                     echo '<a role="button" class="btn btn-primary me-2" href="index.php?add">Ajouter des données</a>';
                     echo '<a role="button" class="btn btn-secondary" href="index.php?addmore">Ajouter plus de données</a>' ;
-                }
+                    }
+                    
                 ?>
                 
                 
