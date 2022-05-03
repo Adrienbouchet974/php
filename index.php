@@ -88,17 +88,42 @@
                 $tabExtension = explode('.', $name);
                 $extension = strtolower(end($tabExtension));
                 //Tableau des extensions que l'on accepte
-                $extensions = ['jpg', 'png', 'jpeg', 'gif'];
+                $extensions = ['png', 'jpg'];
                 $maxSize = 2000000;
-                if(in_array($extension, $extensions) && $size <= $maxSize)
+                
+                if(in_array($extension, $extensions))
                 {
                 move_uploaded_file($tmpName, './uploaded/'.$name);
                 }
                 else {
-                echo'<p class="alert-danger text-center py-3">Danger</p>';
+                session_destroy();
+                echo'<p class="alert-danger text-center py-3"> Extension "pdf" non pris en charge. </p>';
+                }
+
+                if($maxSize <= $filesize)
+                {
+                session_destroy();
+                echo'<p class="alert-danger text-center py-3"> La taille de l\'image doit être infèrieur à 2Mo. </p>';
+                }
+                else
+                {
+                move_uploaded_file($tmpName, './uploaded/'.$name);
+                }
+
+                if($error == 4)
+                {
+                session_destroy();
+                echo'<p class="alert-danger text-center py-3"> Auncun fichier n\'a été télécharger. </p>';
+                }
+                else
+                {
+                move_uploaded_file($tmpName, './uploaded/'.$name);
                 }
 
                 
+                
+
+                echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
                 
 
                 $table = array
@@ -113,9 +138,12 @@
                     "dob" => $dob,
                     "img" => $image,
                     );
-
+                    
                     $_SESSION['table'] = $table;
-                    echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
+
+                    $_SESSION = $table;
+                    
+                
                 }
 
                 
