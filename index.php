@@ -56,7 +56,9 @@
                 }
                 
                 elseif(isset($_GET['addmore'])) include_once('./includes/form2.inc.php');
-
+                
+                
+                
                 elseif(isset($_POST['enregistrer2'])) 
                 {
                 $prenom = htmlspecialchars($_POST['Prénom']);
@@ -72,7 +74,10 @@
                 $bootstrap = $_POST['bootstrap'];
                 $symfony = $_POST['symfony'];
                 $react = $_POST['react'];
-                $connaissances = ($html. $css. $php. $javascript. $mysql. $bootstrap. $symfony.  $react);
+                $connaissances = ($html. $css. $javascript. $php. $mysql. $bootstrap. $symfony.  $react);
+                $color = $_POST['color'];
+                $dob = $_POST['date'];
+                $image = $_FILES['img'];
 
                 $table = array
                     (
@@ -82,6 +87,9 @@
                     "size" => $size,
                     "civility" => $civility,
                     "connaissances" => $connaissances,
+                    "color" => $color,
+                    "dob" => $dob,
+                    "img" => $image,
                     );
                     
 
@@ -89,16 +97,13 @@
                     $_SESSION['table'] = $table;
                     echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
                 }
-
+                
                 elseif(isset($_GET['debugging'])) 
                 {
                     echo '<h2 class="text-center"> Débogage </h2></br>';
                     echo '<h3>===> Lecture du tableau à l\'aide de la fonction print_r</h3><br/>' ;
                     echo '<pre>';
                     print_r($table);
-                    echo '</pre>';
-                    echo '<pre>';
-                    print_r($array);
                     echo '</pre>';
                 }
 

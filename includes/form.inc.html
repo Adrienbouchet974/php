@@ -1,44 +1,51 @@
-<form method="post" action="index.php">
-    <p class="h1 text-center">Ajouter des données</p>
-    <div class="form-floating">
-      <input type="text" name="Prénom" class="form-control" id="firstname" placeholder="Prénom">
-      <label for="floatingPassword">Prénom</label>
-    </div>
-    <br>
-    <div class="form-floating">
-      <input type="text" name="Nom" class="form-control" id="lastname" placeholder="Nom">
-      <label for="floatingPassword">Nom</label>
-    </div>
-    <br>
-    <div>
-      <p>Age (18 à 70 ans)</p>
-      <input type="number" min="18" max="70" class="form-control" id="age" name="Age" placeholder="Renseignez votre âge" required>
-    </div>
-    <br>
-    <div class="input-group">
-      <div class="input-group-prentend">
-        <div class="input-group-text">Taille (1,26 à 3m)</div>
-      </div>
-      <input type="number" min="1.26" max="3" step="0.01" class="form-control" id="taille" name="Taille" placeholder="1.7" required>
-      <div class="input-group-prentend">
-        <div class="input-group-text">m</div>
-      </div>
-    </div>
-    <br>
-    <div class="col-sm-4"> 
-        <input class="form-check-input" type="radio" name="civility" value="femme" id="flexRadioDefault1" required>
-        <label class="form-check-label" for="flexRadioDefault1"
-       value="femme">Femme</label>
-  
-       <input class="form-check-input" type="radio" name="civility" value="homme" id="flexRadioDefault1" required>
-       <label class="form-check-label" for="flexRadioDefault1"
-       value="homme">Homme</label>
-  
-  </div>
-  <br>
-  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  <button name="enregistrer" type="submit" class="btn btn-primary float end" >Enregistrer les données</button>
-  </div>
-  </form>
+<form action="index.php" method="POST" enctype="multipart/form-data">
 
+  
+  <div class="form-group">
+    <div class="form-floating mb-3 mt-3">
+      <input type="text" class="form-control" id="Prénom" name="Prénom" placeholder="Prénom" required>
+      <label for="floatingInput">Prénom</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="Nom" name="Nom" placeholder="Nom" required>
+      <label for="floatingInput">Nom</label>
+    </div>
+  </div> 
+
+
+  <div class="form-group">
+    <label for="basic-url" class="form-label mt-4">Age (18 à 70ans)</label>
+    <div class="input-group mb-3">
+      <input type="number" name="Age" class="form-control" id="Age" min="18" max="70" step="1"
+        data-bind="value:replyNumber" placeholder="Renseigner votre age" required>
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <div class="input-group mb-3 mt-4">
+      <span class="input-group-text">Taille (1.26m à 3m)</span>
+      <input type="number" name="Taille" class="form-control" id="Taille" min="1.26" max="3" step="0.01"
+        data-bind="value:replyNumber" required>
+      <span class="input-group-text">m</span>
+    </div>
+  </div>
+
+  <div class="w-100">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" id="civility" name="civility" value="Femme" required>
+      <label class="form-check-label" for="inlineRadios1">
+        Femme
+      </label>
+    </div>
+    
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" id="civility" name="civility" value="Homme" required>
+      <label class="form-check-label" for="inlineRadios2">
+        Homme
+      </label>
+    </div>
+  </div>
 
