@@ -57,8 +57,6 @@
                 
                 elseif(isset($_GET['addmore'])) include_once('./includes/form2.inc.php');
                 
-                
-                
                 elseif(isset($_POST['enregistrer2'])) 
                 {
                 $prenom = htmlspecialchars($_POST['Prénom']);
@@ -77,7 +75,31 @@
                 $connaissances = ($html. $css. $javascript. $php. $mysql. $bootstrap. $symfony.  $react);
                 $color = $_POST['color'];
                 $dob = $_POST['date'];
-                $image = $_FILES['img'];
+                
+                $image = array 
+                (
+                "name" => $name = $_FILES['img']['name'],
+                "type" =>$type = $_FILES['img']['type'],
+                "tmpname" =>$tmpName = $_FILES['img']['tmp_name'],
+                "error" =>$error = $_FILES['img']['error'],
+                "size" =>$filesize = $_FILES['img']['size'],
+                );
+                
+                $tabExtension = explode('.', $name);
+                $extension = strtolower(end($tabExtension));
+                //Tableau des extensions que l'on accepte
+                $extensions = ['jpg', 'png', 'jpeg', 'gif'];
+                $maxSize = 2000000;
+                if(in_array($extension, $extensions) && $size <= $maxSize)
+                {
+                move_uploaded_file($tmpName, './uploaded/'.$name);
+                }
+                else {
+                echo'<p class="alert-danger text-center py-3">Danger</p>';
+                }
+
+                
+                
 
                 $table = array
                     (
@@ -91,12 +113,13 @@
                     "dob" => $dob,
                     "img" => $image,
                     );
-                    
 
-                    
                     $_SESSION['table'] = $table;
                     echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
                 }
+
+                
+
                 
                 elseif(isset($_GET['debugging'])) 
                 {
