@@ -96,7 +96,7 @@
                     move_uploaded_file($tmpName, './uploaded/'.$name);
                     }
                     else {
-                    echo'<p class="alert-danger text-center py-3"> Extension "pdf" non pris en charge. </p>';
+                    echo"<p class='alert-danger text-center py-3'> Extension $type non pris en charge. </p>";
                     }
 
                     if($maxSize <= $filesize)
@@ -184,14 +184,17 @@
                     echo '<h2 class="text-center"> Boucle </h2></br>' ;
                     echo '<h3>===> Lecture du tableau à l\'aide d\'une boucle foreach</h3>' ;
                     $numero = 0 ;
-                        foreach($table as $key => $table) 
+                        foreach($table as $key => $x) 
                         {
                             echo'</br>' ;
                             echo "à la ligne n°$numero correspond la clé";
                             echo ' "'."$key".'" ' ;
                             echo 'et contient' ;
-                            echo ' "'."$table".'"' ;
+                            echo ' "'."$x".'"' ;
                             $numero++ ;
+                            echo '<img src="./uploaded/'.$table['img']['name'].'" alt=">';
+                            
+                            
                             
                         }
                         
@@ -233,12 +236,18 @@
                 } 
 
                 elseif(isset($_GET['del'])) 
+                    {if(file_exists('./uploaded'))
                     {
                     $sup = "./uploaded/".$table['img']['name'];
                     unlink($sup);
-                    
+                    session_destroy();
+                    echo '<p class="alert-success text-center py-3"> Données supprimées</p>' ;}
+
+                    else
+                    {
                     session_destroy();
                     echo '<p class="alert-success text-center py-3"> Données supprimées</p>' ;
+                    }
                     }
                     else 
                     {

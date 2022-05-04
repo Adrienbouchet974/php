@@ -4,7 +4,57 @@
     <div class="row">
 
         <div name="Prenom" class="card col-md-7 mx-auto my-1">
-            <?php include './includes/form.inc.html';?>
+            <?php //include './includes/form.inc.html';?>
+            <form action="index.php" method="POST" enctype="multipart/form-data">
+
+  
+  <div class="form-group">
+    <div class="form-floating mb-3 mt-3">
+      <input type="text" class="form-control" id="Prénom" name="Prénom" placeholder="Prénom" required>
+      <label for="floatingInput">Prénom</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="Nom" name="Nom" placeholder="Nom" required>
+      <label for="floatingInput">Nom</label>
+    </div>
+  </div> 
+
+
+  <div class="form-group">
+    <label for="basic-url" class="form-label mt-4">Age (18 à 70ans)</label>
+    <div class="input-group mb-3">
+      <input type="number" name="Age" class="form-control" id="Age" min="18" max="70" step="1"
+        data-bind="value:replyNumber" placeholder="Renseigner votre age" required>
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <div class="input-group mb-3 mt-4">
+      <span class="input-group-text">Taille (1.26m à 3m)</span>
+      <input type="number" name="Taille" class="form-control" id="Taille" min="1.26" max="3" step="0.01"
+        data-bind="value:replyNumber" required>
+      <span class="input-group-text">m</span>
+    </div>
+  </div>
+
+  <div class="w-100">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" id="civility" name="civility" value="Femme" required>
+      <label class="form-check-label" for="inlineRadios1">
+        Femme
+      </label>
+    </div>
+    
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" id="civility" name="civility" value="Homme" required>
+      <label class="form-check-label" for="inlineRadios2">
+        Homme
+      </label>
+    </div>
+  </div>
         </div>
 
         <div name="Connaissances" class="card col-md-4 mx-auto my-1">
