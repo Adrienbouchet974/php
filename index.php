@@ -56,22 +56,22 @@
                 }
                 
                 elseif(isset($_GET['addmore'])) include_once('./includes/form2.inc.php');
-                
                 elseif(isset($_POST['enregistrer2'])) 
                 {
+                $espace = ' ';
                 $prenom = htmlspecialchars($_POST['Prénom']);
                 $nom = htmlspecialchars($_POST['Nom']);
                 $age = $_POST['Age'];
                 $size = $_POST['Taille'];
                 $civility = $_POST['civility'];
-                $html = $_POST['html'];
-                $css = $_POST['css'];
-                $javascript = $_POST['javascript'];
-                $php = $_POST['php'];
-                $mysql = $_POST['mysql'];
-                $bootstrap = $_POST['bootstrap'];
-                $symfony = $_POST['symfony'];
-                $react = $_POST['react'];
+                $html = $_POST['html'] .$espace;
+                $css = $_POST['css'] .$espace;
+                $javascript = $_POST['javascript'] .$espace;
+                $php = $_POST['php'] .$espace;
+                $mysql = $_POST['mysql'] .$espace;
+                $bootstrap = $_POST['bootstrap'] .$espace;
+                $symfony = $_POST['symfony'] .$espace;
+                $react = $_POST['react'] .$espace;
                 $connaissances = ($html. $css. $javascript. $php. $mysql. $bootstrap. $symfony.  $react);
                 $color = $_POST['color'];
                 $dob = $_POST['date'];
@@ -91,29 +91,27 @@
                 $extensions = ['png', 'jpg'];
                 $maxSize = 2000000;
                 
-                    if(in_array($extension, $extensions))
+                    if($extension == ['png', 'jpg']) 
                     {
-                    move_uploaded_file($tmpName, './uploaded/'.$name);
-                    }
-                    else {
                     echo"<p class='alert-danger text-center py-3'> Extension $type non pris en charge. </p>";
+                    session_destroy();
                     }
 
-                    if($maxSize <= $filesize)
+                    elseif($maxSize <= $filesize)
                     {
                     echo'<p class="alert-danger text-center py-3"> La taille de l\'image doit être infèrieur à 2Mo. </p>';
+                    session_destroy();
                     }
-                    else
-                    {
-                    move_uploaded_file($tmpName, './uploaded/'.$name);
-                    }
-
-                    if($error == 4)
+                    
+                    elseif($error == 4) 
                     {
                     echo'<p class="alert-danger text-center py-3"> Auncun fichier n\'a été télécharger. </p>';
+                    session_destroy();
                     }
                     else
                     {
+                    echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>';
+                    
                     move_uploaded_file($tmpName, './uploaded/'.$name);
                     }
 
@@ -132,7 +130,7 @@
                     );
                     
                     $_SESSION['table'] = $table;
-                    echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>' ;
+                    
                 
                 }
 
@@ -184,30 +182,31 @@
                 echo '<h2 class="text-center"> Boucle </h2></br>' ;
                 echo '<h3>===> Lecture du tableau à l\'aide d\'une boucle foreach</h3>' ;
                 $numero = 0 ;
+
+                
+
                     foreach($table as $key => $value) 
                     {
+                        if($numero == 8 && $key <= "img" )
+                        {
+                            echo'<br/>';
+                        echo "à la ligne n°$numero correspond la clé";
+                        echo ' "'."img".'" ' ;
+                        echo 'et contient' ;
+                        echo '<img class="w-100" src="./uploaded/'.$table['img']['name'].'" alt=">';
+                        }
+                        else
+                        {
                         echo'</br>' ;
                         echo "à la ligne n°$numero correspond la clé";
                         echo ' "'."$key".'" ' ;
                         echo 'et contient' ;
                         echo ' "'."$value".'"' ;
                         $numero++ ;
+                        };
                     }
-                    if($value <= $key = $image)
-                    {
-                    echo "à la ligne n°$numero correspond la clé";
-                    echo ' "'."$key".'" ' ;
-                    echo 'et contient' ;
-                    echo ' "'."$value".'"' ;
-                    }
-                    else 
-                    { 
-                    echo "à la ligne n°$numero correspond la clé";
-                    echo ' "'."$key".'" ' ;
-                    echo 'et contient' ;
-                    echo '<img class="w-100" src="./uploaded/'.$table['img']['name'].'" alt=">';
-                    };
                 }
+                    
 
                 elseif(isset($_GET['function'])) 
                 {
@@ -217,15 +216,24 @@
                 function readTable($table) 
                 {   
                     $numero = 0 ;
-                    foreach($table as $key => $table) 
-                    {
+                    foreach($table as $key => $value)
+                    if($numero == 8 && $key <= "img" )
+                        {
+                            echo'<br/>';
+                        echo "à la ligne n°$numero correspond la clé";
+                        echo ' "'."img".'" ' ;
+                        echo 'et contient' ;
+                        echo '<img class="w-100" src="./uploaded/'.$table['img']['name'].'" alt=">';
+                        }
+                        else
+                        {
                         echo'</br>' ;
                         echo "à la ligne n°$numero correspond la clé";
                         echo ' "'."$key".'" ' ;
                         echo 'et contient' ;
-                        echo ' "'."$table".'"' ;
-                        $numero++ ; 
-                    }
+                        echo ' "'."$value".'"' ;
+                        $numero++ ;
+                        };
                 }
 
                 readTable($table);
