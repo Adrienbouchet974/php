@@ -58,21 +58,19 @@
                 elseif(isset($_GET['addmore'])) include_once('./includes/form2.inc.php');
                 elseif(isset($_POST['enregistrer2'])) 
                 {
-                $espace = ' ';
                 $prenom = htmlspecialchars($_POST['Prénom']);
                 $nom = htmlspecialchars($_POST['Nom']);
                 $age = $_POST['Age'];
                 $size = $_POST['Taille'];
                 $civility = $_POST['civility'];
-                $html = $_POST['html'] .$espace;
-                $css = $_POST['css'] .$espace;
-                $javascript = $_POST['javascript'] .$espace;
-                $php = $_POST['php'] .$espace;
-                $mysql = $_POST['mysql'] .$espace;
-                $bootstrap = $_POST['bootstrap'] .$espace;
-                $symfony = $_POST['symfony'] .$espace;
-                $react = $_POST['react'] .$espace;
-                $connaissances = ($html. $css. $javascript. $php. $mysql. $bootstrap. $symfony.  $react);
+                $html = $_POST['html'];
+                $css = $_POST['css'];
+                $javascript = $_POST['javascript'];
+                $php = $_POST['php'];
+                $mysql = $_POST['mysql'];
+                $bootstrap = $_POST['bootstrap'];
+                $symfony = $_POST['symfony'];
+                $react = $_POST['react'];
                 $color = $_POST['color'];
                 $dob = $_POST['date'];
                 
@@ -123,13 +121,22 @@
                     "age" => $age,
                     "size" => $size,
                     "civility" => $civility,
-                    "connaissances" => $connaissances,
+                    "html" => $html,
+                    "css" => $css,
+                    "javascript" => $javascript,
+                    "php" => $php,
+                    "mysql" => $mysql,
+                    "bootstrap" => $bootstrap,
+                    "symfony" => $symfony,
+                    "react" => $react,
                     "color" => $color,
                     "dob" => $dob,
                     "img" => $image,
                     );
+
+                    $filtre = array_filter($table);
                     
-                    $_SESSION['table'] = $table;
+                    $_SESSION['table'] = $filtre;
                     
                 
                 }
