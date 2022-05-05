@@ -56,6 +56,7 @@
                 }
                 
                 elseif(isset($_GET['addmore'])) include_once('./includes/form2.inc.php');
+
                 elseif(isset($_POST['enregistrer2'])) 
                 {
                 $prenom = htmlspecialchars($_POST['Prénom']);
@@ -101,11 +102,42 @@
                     session_destroy();
                     }
                     
+                    elseif($error == 2) 
+                    {
+                    echo'<p class="alert-danger text-center py-3"> Erreur:2 </p>';
+                    session_destroy();
+                    }
+
+                    elseif($error == 3) 
+                    {
+                    echo'<p class="alert-danger text-center py-3"> Erreur:3 </p>';
+                    session_destroy();
+                    }
+
                     elseif($error == 4) 
                     {
                     echo'<p class="alert-danger text-center py-3"> Auncun fichier n\'a été télécharger. </p>';
                     session_destroy();
                     }
+
+                    elseif($error == 6) 
+                    {
+                    echo'<p class="alert-danger text-center py-3"> Erreur:6 </p>';
+                    session_destroy();
+                    }
+
+                    elseif($error == 7) 
+                    {
+                    echo'<p class="alert-danger text-center py-3"> Erreur:7 </p>';
+                    session_destroy();
+                    }
+
+                    elseif($error == 8) 
+                    {
+                    echo'<p class="alert-danger text-center py-3"> Erreur:8 </p>';
+                    session_destroy();
+                    }
+                    
                     else
                     {
                     echo '<p class="alert-success text-center py-3"> Données sauvegardées</p>';
@@ -259,7 +291,8 @@
                     );
                 } 
 
-                elseif(isset($_GET['del'])) 
+                elseif(isset($_GET['del']))
+
                     {if(file_exists('./uploaded'))
                     {
                     $sup = "./uploaded/".$table['img']['name'];
