@@ -98,7 +98,7 @@
 
                     elseif($maxSize <= $filesize)
                     {
-                    echo'<p class="alert-danger text-center py-3"> La taille de l\'image doit être infèrieur à 2Mo. </p>';
+                    echo'<p class="alert-danger text-center py-3"> La taille de l\'image doit être infèrieure à 2Mo. </p>';
                     session_destroy();
                     }
                     
@@ -116,7 +116,7 @@
 
                     elseif($error == 4) 
                     {
-                    echo'<p class="alert-danger text-center py-3"> Auncun fichier n\'a été télécharger. </p>';
+                    echo'<p class="alert-danger text-center py-3"> Auncun fichier n\'a été téléchargé. </p>';
                     session_destroy();
                     }
 
