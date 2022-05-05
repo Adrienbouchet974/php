@@ -181,57 +181,66 @@
 
                 elseif(isset($_GET['loop']))
                 {
-                    echo '<h2 class="text-center"> Boucle </h2></br>' ;
-                    echo '<h3>===> Lecture du tableau à l\'aide d\'une boucle foreach</h3>' ;
-                    $numero = 0 ;
-                        foreach($table as $key => $x) 
-                        {
-                            echo'</br>' ;
-                            echo "à la ligne n°$numero correspond la clé";
-                            echo ' "'."$key".'" ' ;
-                            echo 'et contient' ;
-                            echo ' "'."$x".'"' ;
-                            $numero++ ;
-                            echo '<img src="./uploaded/'.$table['img']['name'].'" alt=">';
-                            
-                            
-                            
-                        }
-                        
+                echo '<h2 class="text-center"> Boucle </h2></br>' ;
+                echo '<h3>===> Lecture du tableau à l\'aide d\'une boucle foreach</h3>' ;
+                $numero = 0 ;
+                    foreach($table as $key => $value) 
+                    {
+                        echo'</br>' ;
+                        echo "à la ligne n°$numero correspond la clé";
+                        echo ' "'."$key".'" ' ;
+                        echo 'et contient' ;
+                        echo ' "'."$value".'"' ;
+                        $numero++ ;
+                    }
+                    if($value <= $key = $image)
+                    {
+                    echo "à la ligne n°$numero correspond la clé";
+                    echo ' "'."$key".'" ' ;
+                    echo 'et contient' ;
+                    echo ' "'."$value".'"' ;
+                    }
+                    else 
+                    { 
+                    echo "à la ligne n°$numero correspond la clé";
+                    echo ' "'."$key".'" ' ;
+                    echo 'et contient' ;
+                    echo '<img class="w-100" src="./uploaded/'.$table['img']['name'].'" alt=">';
+                    };
                 }
 
                 elseif(isset($_GET['function'])) 
                 {
-                    echo '<h2 class="text-center"> Fonction </h2></br>' ;
-                    echo '<h3>===> j\'utilise ma fonction readTable()</h3>' ;
+                echo '<h2 class="text-center"> Fonction </h2></br>' ;
+                echo '<h3>===> j\'utilise ma fonction readTable()</h3>' ;
                     
-                    function readTable($table) 
-                    {   
-                        $numero = 0 ;
-                        foreach($table as $key => $table) 
-                        {
-                            echo'</br>' ;
-                            echo "à la ligne n°$numero correspond la clé";
-                            echo ' "'."$key".'" ' ;
-                            echo 'et contient' ;
-                            echo ' "'."$table".'"' ;
-                            $numero++ ; 
-                        }
+                function readTable($table) 
+                {   
+                    $numero = 0 ;
+                    foreach($table as $key => $table) 
+                    {
+                        echo'</br>' ;
+                        echo "à la ligne n°$numero correspond la clé";
+                        echo ' "'."$key".'" ' ;
+                        echo 'et contient' ;
+                        echo ' "'."$table".'"' ;
+                        $numero++ ; 
                     }
+                }
 
-                    readTable($table);
+                readTable($table);
 
-                    $prenom = $_POST['Prénom'];
-                    $nom = $_POST['Nom'];
-                    $age = $_POST['Age'];
-                    $size = $_POST['Taille'];
-                    $civility = $_POST['civility'];
-                        $key = array(
-                        "first_name" => $prenom,
-                        "last_name" => $nom,
-                        "age" => $age,
-                        "size" => $size,
-                        "civility" => $civility
+                $prenom = $_POST['Prénom'];
+                $nom = $_POST['Nom'];
+                $age = $_POST['Age'];
+                $size = $_POST['Taille'];
+                $civility = $_POST['civility'];
+                    $key = array(
+                    "first_name" => $prenom,
+                    "last_name" => $nom,
+                    "age" => $age,
+                    "size" => $size,
+                    "civility" => $civility
                     );
                 } 
 
