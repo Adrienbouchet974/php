@@ -117,7 +117,7 @@
 
         <div name="JoindreUneImage" class="card col-md-11 mx-auto my-1">
             <h6>Joindre une image (jpg ou png)</h6>
-            <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
+            <input type="hidden" name="MAX_FILE_SIZE" value="5000000"/>
             <input class="form-control" type="file" MAX_FILE_SIZE accept=".jpg, .png," id=" formFile" name="img">
         </div> 
 
