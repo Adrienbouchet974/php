@@ -296,7 +296,7 @@
                     {if(file_exists('./uploaded'))
                     {
                     $sup = "./uploaded/".$table['img']['name'];
-                    unlink($sup);
+                    @unlink($sup);
                     session_destroy();
                     echo '<p class="alert-success text-center py-3"> Données supprimées</p>' ;}
 
