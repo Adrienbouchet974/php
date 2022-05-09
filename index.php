@@ -90,7 +90,7 @@
                 $extensions = ['png', 'jpg'];
                 $maxSize = 2000000;
                 
-                    if($extension == ['png', 'jpg']) 
+                    if(in_array($extension, $extensions) === false) 
                     {
                     echo"<p class='alert-danger text-center py-3'> Extension $type non pris en charge. </p>";
                     session_destroy();
@@ -323,7 +323,3 @@
     <?php include("includes/footer.inc.html"); ?>
 </body>
 </html>
-
-
-
-
